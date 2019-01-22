@@ -14,7 +14,8 @@ import { RecordListComponent } from './record-list/record-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecordCardComponent } from './record-card/record-card.component';
 import { RecordListResolver } from './_resolvers/record-list.resolver';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentListResolver } from './_resolvers/comment-list.resolver';
 
 
 
@@ -32,11 +33,13 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    ReactiveFormsModule,
     PaginationModule.forRoot()
   ],
   providers: [ DataService,
                AlertifyService,
-               RecordListResolver
+               RecordListResolver,
+               CommentListResolver
               ],
   bootstrap: [AppComponent]
 })

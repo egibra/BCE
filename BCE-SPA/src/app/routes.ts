@@ -2,7 +2,8 @@ import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { RecordListComponent } from './record-list/record-list.component';
-import { RecordListResolver } from 'src/app/_resolvers/record-list.resolver';
+import { RecordListResolver } from './_resolvers/record-list.resolver';
+import { CommentListResolver } from './_resolvers/comment-list.resolver';
 
 export const appRoutes: Routes = [
 
@@ -12,7 +13,7 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         children: [
             { path: 'records', component: RecordListComponent, resolve: {records: RecordListResolver}},
-            { path: 'records/:id', component: CommentListComponent}
+            { path: 'records/:id', component: CommentListComponent, resolve: {comments: CommentListResolver}}
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'}

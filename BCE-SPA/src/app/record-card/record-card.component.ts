@@ -20,7 +20,7 @@ export class RecordCardComponent implements OnInit {
     this.alertify.confirm('Are you sure you want to delete this record?', () => {
       this.dataService.deleteRecord(id).subscribe(() => {
         this.alertify.success('Record has been deleted');
-        this.getRecordsChange.emit(id.toString());
+        this.getRecordsChange.emit();
       }, error => {
         this.alertify.error('Failed to delete the record');
       });

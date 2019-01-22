@@ -1,19 +1,16 @@
 <div class="card mb-4">
-  <div>
-    <h3>
-        {{ record.title}}
-    </h3>
+  <div class="card-title">
+      <a [routerLink]="['/records/', record.id]" >{{ record.title}}</a>  
   </div>
   <div class="card-content-wrapper">
       {{ record.content }}
-      
-    <div class="list-inline member-icons animate text-center">
-       <button class="btn btn-secondary"  (click)="deleteRecord(record.id)"><i class="fa fa-trash"></i></button>
-    </div>
   </div>
   <div>
     <h6 class="card-email text-center mb-1"><i class="fa fa-user"></i>
       {{ record.email}}
     </h6>
   </div>
+  <div class="text-center" style="margin-bottom: 10px;">
+    <button class="btn btn-secondary"  (click)="deleteRecord(record.id)"><i class="fa fa-trash"></i></button>
+ </div>
 </div>

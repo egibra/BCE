@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Record } from '../_models/record';
+import { Comment } from '../_models/comment';
 import { map } from 'rxjs/operators';
 import { PaginatedResult } from '../_models/pagination';
 
@@ -12,7 +13,7 @@ import { PaginatedResult } from '../_models/pagination';
 export class DataService {
   baseUrl = environment.apiUrl;
 constructor(private http: HttpClient) { }
-  getRecords(page?, itemsPerPage?, userParams?): Observable<PaginatedResult<Record[]>> {
+  getRecords(page?, itemsPerPage?): Observable<PaginatedResult<Record[]>> {
     const paginatedResult: PaginatedResult<Record[]> = new PaginatedResult<Record[]>();
     let params = new HttpParams();
     if (page != null && itemsPerPage != null) {
@@ -29,7 +30,31 @@ constructor(private http: HttpClient) { }
       })
     );
   }
+
+  getComments(id, page?, itemsPerPage?): Observable<PaginatedResult<Comment[]>> {
+    const paginatedResult: PaginatedResult<Comment[]> = new PaginatedResult<Comment[]>();
+    let params = new HttpParams();
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+    return this.http.get<Comment[]>(this.baseUrl + 'records/' + id + '/comments', { observe: 'response', params}).pipe(
+      map(response => {
+        paginatedResult.result = response.body;
+        if (response.headers.get('Pagination') != null) {
+          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+        }
+        return paginatedResult;
+      })
+    );
+  }
   deleteRecord(id: number) {
     return this.http.delete(this.baseUrl + 'records/' + id);
+  }
+  addRecord(record: Record) {
+    return this.http.post(this.baseUrl + 'records', record);
+  }
+  addComment(comment: Comment, id: number) {
+    return this.http.post(this.baseUrl + 'records/' + id, comment);
   }
 }
