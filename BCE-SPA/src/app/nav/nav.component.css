@@ -1,0 +1,22 @@
+.dropdown-toggle, .dropdown-item {
+    cursor: pointer;
+}
+
+img {
+    max-height: 50px;
+    border: 2px solid #D5CBCB;
+    display: inline;
+    border-radius: 12%;
+}
+
+li {
+    text-transform: none;
+    letter-spacing: .5px;
+    display: block;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: color .3s,border-bottom-color .3s
+}
+li:hover {
+    border-bottom-color: #4d4d4d
+}

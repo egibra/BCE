@@ -19,10 +19,16 @@ namespace Bce.API.Data
             _context.Add(entity);
         }
 
-        public void Delete<T>(T entity) where T : class
-        {
-            _context.Remove(entity);
-        }
+        public void DeleteRecord(int id)
+         {
+             var record = _context.Records.FirstOrDefault(u => u.Id == id);
+              _context.Records.Remove(record);
+         }
+        public void DeleteComment(int id)
+         {
+             var comment = _context.Comments.FirstOrDefault(u => u.Id == id);
+              _context.Comments.Remove(comment);
+         }
 
         public async Task<Comment> GetComment(int id)
         {

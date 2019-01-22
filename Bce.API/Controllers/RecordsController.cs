@@ -37,22 +37,11 @@ namespace Bce.API.Controllers
             throw new  Exception("Creating the record failed on save");
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRecord()
+        public IActionResult DeleteRecord(int id)
         {
-            var record = _repo.GetRecord(2);
-            _repo.Delete(record);
-            List<Comment> comments = await _repo.GetRecordComments(2);
-            if (comments.Count > 0)
-            {
-                foreach(Comment comment in comments)
-                {
-                     _repo.Delete(comment);
-                }                
-            }
-            if (await _repo.SaveAll())
-                           return NoContent();
-            
-            throw new Exception("Error deleting the record");
+            _repo.DeleteRecord(id);
+           _repo.SaveAll();
+            return Ok();      
         }
     }
 }

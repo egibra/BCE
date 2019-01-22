@@ -12,3 +12,17 @@ C:\Users\acer\Desktop\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.AssemblyInfo.c
 C:\Users\acer\Desktop\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.RazorTargetAssemblyInfo.cache
 C:\Users\acer\Desktop\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.dll
 C:\Users\acer\Desktop\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.pdb
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\bin\Debug\netcoreapp2.2\Bce.API.deps.json
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\bin\Debug\netcoreapp2.2\Bce.API.runtimeconfig.json
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\bin\Debug\netcoreapp2.2\Bce.API.runtimeconfig.dev.json
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\bin\Debug\netcoreapp2.2\Bce.API.dll
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\bin\Debug\netcoreapp2.2\Bce.API.pdb
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.csprojAssemblyReference.cache
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.csproj.CoreCompileInputs.cache
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.RazorAssemblyInfo.cache
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.RazorAssemblyInfo.cs
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.AssemblyInfoInputs.cache
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.AssemblyInfo.cs
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.RazorTargetAssemblyInfo.cache
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.dll
+C:\Users\NET\Desktop\PRC\BCE\Bce.API\obj\Debug\netcoreapp2.2\Bce.API.pdb

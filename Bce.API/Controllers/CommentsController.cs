@@ -20,6 +20,11 @@ namespace Bce.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateComment(int recordID, Comment comment)
         {
+            var record = _repo.GetRecord(recordID);
+            if (record.Result == null)
+            {
+                return BadRequest();
+            }
             comment.RecordID = recordID;
             comment.DateCreated = DateTime.Now;
             _repo.Add(comment);
@@ -29,9 +34,14 @@ namespace Bce.API.Controllers
             throw new  Exception("Creating the comment failed on save");
         }
         [HttpGet]
-        public async Task<IActionResult> GetComments([FromQuery]UserParams userParams, int RecordID)
+        public async Task<IActionResult> GetComments([FromQuery]UserParams userParams, int recordID)
         {
-            userParams.RecordID = RecordID;
+            var record = _repo.GetRecord(recordID);
+            if (record.Result == null)
+            {
+                return BadRequest();
+            }
+            userParams.RecordID = recordID;
             var records = await _repo.GetRecordCommentsPaged(userParams);
             Response.AddPagination(records.CurrentPage, records.PageSize, 
             records.TotalCount, records.TotalPages);
@@ -39,14 +49,16 @@ namespace Bce.API.Controllers
             return Ok(records);
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteComment(int id)
+        public IActionResult DeleteComment(int id)
         {
             var comment = _repo.GetComment(id);
-            _repo.Delete(comment);
-            if (await _repo.SaveAll())
-                            return NoContent();
-            
-            throw new Exception("Error deleting the comment");
+            if (comment.Result == null)
+            {
+                return BadRequest();
+            }
+            _repo.DeleteComment(id);
+            _repo.SaveAll();
+            return NoContent();
         }
     }
 }
