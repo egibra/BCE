@@ -1,0 +1,15 @@
+<div class="card mb-4">
+    <div class="card-content-wrapper">
+        {{ comment.content }}
+    </div>
+    <div>
+      <h6 class="card-email text-center mb-1"><i class="fa fa-user"></i>
+        {{ comment.email}} <br/>
+        <span>{{comment.dateCreated | timeAgo }}</span>
+        
+      </h6>
+    </div>
+    <div class="text-center" style="margin-bottom: 10px;">
+      <button class="btn btn-secondary"  (click)="deleteComment(comment.id)"><i class="fa fa-trash"></i></button>
+   </div>
+  </div>

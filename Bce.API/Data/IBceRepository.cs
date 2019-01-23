@@ -8,6 +8,7 @@ namespace Bce.API.Data
     public interface IBceRepository
     {
          void Add<T>(T entity) where T: class;
+
          void DeleteRecord(int id);
          void DeleteComment(int id);
          Task<bool> SaveAll();

@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Bce.API.Data;
+using Bce.API.Dto;
 using Bce.API.Helpers;
 using Bce.API.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +15,11 @@ namespace Bce.API.Controllers
     public class CommentsController :ControllerBase
     {
         private readonly IBceRepository _repo;
-        public CommentsController(IBceRepository repo)
+        private readonly IMapper _mapper;
+        public CommentsController(IBceRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
     
         [HttpPost]
@@ -27,11 +32,12 @@ namespace Bce.API.Controllers
             }
             comment.RecordID = recordID;
             comment.DateCreated = DateTime.Now;
+
             _repo.Add(comment);
             if(await _repo.SaveAll()) {
-                return Ok(comment);
+                return Ok(record);
             }
-            throw new  Exception("Creating the comment failed on save");
+            throw new  Exception("Creating the record failed on save");
         }
         [HttpGet]
         public async Task<IActionResult> GetComments([FromQuery]UserParams userParams, int recordID)
@@ -42,11 +48,11 @@ namespace Bce.API.Controllers
                 return BadRequest();
             }
             userParams.RecordID = recordID;
-            var records = await _repo.GetRecordCommentsPaged(userParams);
-            Response.AddPagination(records.CurrentPage, records.PageSize, 
-            records.TotalCount, records.TotalPages);
-
-            return Ok(records);
+            var comments = await _repo.GetRecordCommentsPaged(userParams);
+            var commentsToReturn = _mapper.Map<IEnumerable<CommentToReturnDto>>(comments);
+            Response.AddPagination(comments.CurrentPage, comments.PageSize, 
+            comments.TotalCount, comments.TotalPages, record.Result.Title, record.Result.Content);
+            return Ok(commentsToReturn);
         }
         [HttpDelete("{id}")]
         public IActionResult DeleteComment(int id)

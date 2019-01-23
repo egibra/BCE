@@ -20,14 +20,6 @@
     margin-left: auto;
     opacity: 0;
 }
-.card-title {
-    height: 45px;
-    text-align: center;
-    font-weight: bold;
-    text-overflow: ellipsis;
-    overflow: hidden;
-
-}
 
 .card {
     height: 300px;

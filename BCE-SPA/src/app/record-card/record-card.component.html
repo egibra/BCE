@@ -7,7 +7,10 @@
   </div>
   <div>
     <h6 class="card-email text-center mb-1"><i class="fa fa-user"></i>
-      {{ record.email}}
+      {{ record.email}} <br/>
+      {{ record.commentsCount}} comments <br />
+      <span>{{record.dateCreated | timeAgo }}</span>
+      
     </h6>
   </div>
   <div class="text-center" style="margin-bottom: 10px;">

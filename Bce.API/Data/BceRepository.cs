@@ -18,7 +18,6 @@ namespace Bce.API.Data
         {
             _context.Add(entity);
         }
-
         public void DeleteRecord(int id)
          {
              var record = _context.Records.FirstOrDefault(u => u.Id == id);
@@ -53,11 +52,12 @@ namespace Bce.API.Data
 
         public async Task<PagedList<Record>> GetRecords(UserParams userParams)
         {
-            return await PagedList<Record>.CreateAsync(_context.Records, userParams.PageNumber, userParams.PageSize);
+            return await PagedList<Record>.CreateAsync(_context.Records.Include(s => s.Comments), userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
         {
+            var record = _context.Records.Where(x => x.Id == 64).FirstAsync();
             return await _context.SaveChangesAsync() > 0;
         }
     }

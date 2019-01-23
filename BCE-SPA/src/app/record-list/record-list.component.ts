@@ -27,6 +27,7 @@ export class RecordListComponent implements OnInit {
   });
 
      this.route.data.subscribe(data => {
+       console.log(data);
       this.records = data['records'].result;
       this.pagination = data['records'].pagination;
     });

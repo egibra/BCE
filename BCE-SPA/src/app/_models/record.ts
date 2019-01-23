@@ -3,5 +3,6 @@ export interface Record {
     title: string;
     context: string;
     email: number;
+    commentsCount: number;
     dateCreated: string;
 }

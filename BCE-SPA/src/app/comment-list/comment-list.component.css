@@ -1,0 +1,16 @@
+.commentFormContainer {
+    width: 500px;
+    margin: auto;
+
+}
+.recordTitle{
+text-align: center;
+font-size: 16px;
+font-weight: bold;
+}
+.recordContent{
+    text-align: center;
+    font-size: 12px;
+    max-height: 200px;
+    
+}

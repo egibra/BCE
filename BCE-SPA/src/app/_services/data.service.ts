@@ -48,13 +48,19 @@ constructor(private http: HttpClient) { }
       })
     );
   }
+  getRecord(id: string) {
+    return this.http.get(this.baseUrl + 'records/' + id);
+  }
   deleteRecord(id: number) {
     return this.http.delete(this.baseUrl + 'records/' + id);
   }
   addRecord(record: Record) {
     return this.http.post(this.baseUrl + 'records', record);
   }
-  addComment(comment: Comment, id: number) {
-    return this.http.post(this.baseUrl + 'records/' + id, comment);
+  addComment(comment: Comment, id: string) {
+    return this.http.post(this.baseUrl + 'records/' + id + '/comments', comment);
+  }
+  deleteComment(recordID: string, commentID: string) {
+    return this.http.delete(this.baseUrl + 'records/' + recordID + '/comments/' + commentID);
   }
 }
