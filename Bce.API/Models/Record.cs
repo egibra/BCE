@@ -11,6 +11,7 @@ namespace Bce.API.Models
         public string Email { get; set; }
         public DateTime DateCreated { get; set; }
         public ICollection<Comment> Comments { get; set; }
+	public string RecordSingle { get; set; }
 
     }
 }
