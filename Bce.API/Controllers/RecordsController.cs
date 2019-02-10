@@ -16,7 +16,7 @@ namespace Bce.API.Controllers
     {
         private readonly IBceRepository _repo;
         private readonly IMapper _mapper;
-
+        private readonly Imapper _xx;
 
 
 
