@@ -14,6 +14,10 @@ namespace Bce.API.Controllers
     [Route("api/[controller]")]
     public class RecordsController :ControllerBase
     {
+        private readonly IBceRepository _repo;
+        private readonly IMapper _mapper;
+        private readonly Imapper _xx;
+        
         public RecordsController(IBceRepository repo, IMapper mapper)
         {
             _repo = repo;
